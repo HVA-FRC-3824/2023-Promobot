@@ -6,3 +6,7 @@ Current Features:
 * West Coast Drive
 * Turret
 * LEDS (maybe)
+
+Contributors:
+* Zane Maples
+* Ryan Moon
