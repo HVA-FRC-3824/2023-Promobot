@@ -20,6 +20,12 @@ public class WestCoast extends SubsystemBase {
     /* init */
     public WestCoast()
     {
+        /* set default factory values */
+        left_master.configFactoryDefault();
+        left_slave.configFactoryDefault();
+        right_master.configFactoryDefault();
+        right_slave.configFactoryDefault();
+
         left_slave.follow(left_master);
         right_slave.follow(right_master);
 
