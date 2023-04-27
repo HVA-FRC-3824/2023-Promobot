@@ -29,6 +29,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-    WestCoastDrive.Drive(-left_joystick.getY(), -right_joystick.getY());
+    WestCoastDrive.Drive(-left_joystick.getY() * Constants.INPUT_MULTIPLIER, -right_joystick.getY() * Constants.INPUT_MULTIPLIER);
   }
 }
