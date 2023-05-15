@@ -6,10 +6,10 @@ public class Constants {
     public static final int RIGHT_JOYSTICK_ID = 1;
 
     // WestCoast Motors
-    public static final int L_MASTER_ID = 1;
-    public static final int L_SLAVE_ID  = 1;
+    public static final int L_MASTER_ID = 6;
+    public static final int L_SLAVE_ID  = 7;
     public static final int R_MASTER_ID = 1;
-    public static final int R_SLAVE_ID  = 1;
+    public static final int R_SLAVE_ID  = 4;
 
     // WestCoast invert type
     public static final boolean RIGHT_INVERTED = true;
