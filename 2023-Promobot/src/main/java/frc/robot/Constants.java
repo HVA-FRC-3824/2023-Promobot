@@ -18,7 +18,4 @@ public class Constants {
     // WestCoast input multiplier
     public static final double INPUT_MULTIPLIER_FORWARD  = 1.0;
     public static final double INPUT_MULTIPLIER_SIDEWAYS = 1.0;
-
-    // Turret Motors
-    public static final int TURRET_MOTOR_ID = 2;
 }
