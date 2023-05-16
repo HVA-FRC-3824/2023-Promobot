@@ -4,8 +4,8 @@
 
 Current Features:
 * West Coast Drive
-* Turret
-* LEDS (maybe)
+* Turret (potentially)
+* LEDS
 
 Contributors:
 * Zane Maples
