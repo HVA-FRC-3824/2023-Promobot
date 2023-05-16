@@ -26,6 +26,7 @@ public class WestCoast extends SubsystemBase {
         right_master.configFactoryDefault();
         right_slave.configFactoryDefault();
 
+        /* setup motor group */
         left_slave.follow(left_master);
         right_slave.follow(right_master);
 
