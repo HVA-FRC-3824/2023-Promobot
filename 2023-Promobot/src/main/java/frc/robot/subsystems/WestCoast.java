@@ -9,7 +9,7 @@ import frc.robot.Constants;
 
 public class WestCoast extends SubsystemBase {
 
-    /* declare our motors */
+    // Declare our motor controllers
     WPI_TalonSRX left_master  = new WPI_TalonSRX(Constants.L_MASTER_ID);
     WPI_TalonSRX left_slave   = new WPI_TalonSRX(Constants.L_SLAVE_ID);
     WPI_TalonSRX right_master = new WPI_TalonSRX(Constants.R_MASTER_ID);
@@ -17,29 +17,28 @@ public class WestCoast extends SubsystemBase {
 
     DifferentialDrive drive_train;
 
-    /* init */
+    // Init
     public WestCoast()
     {
-        /* set default factory values */
+        // Configure controllers
         left_master.configFactoryDefault();
         left_slave.configFactoryDefault();
         right_master.configFactoryDefault();
         right_slave.configFactoryDefault();
 
-        /* setup motor group */
+        // Setup pseudo motor group
         left_slave.follow(left_master);
         right_slave.follow(right_master);
 
-        /* invert voltages for driving TODO: test this */
+        // Invert voltages
         left_master.setInverted(Constants.LEFT_INVERTED);
         right_master.setInverted(Constants.RIGHT_INVERTED);
-
-        /* same for slaves */
         left_slave.setInverted(InvertType.FollowMaster);
         right_slave.setInverted(InvertType.FollowMaster);
 
-        /* once following is initialized setup drive */
+        // Init our WPILIB drive thingy
         drive_train = new DifferentialDrive(left_master,right_master);
+        drive_train.setSafetyEnabled(Constants.SAFETY_ENABLED);
     }
     
     public void Drive(double forward, double sideways)

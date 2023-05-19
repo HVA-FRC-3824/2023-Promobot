@@ -15,7 +15,7 @@ public class LEDS {
     Color FIRE_COLORS[] = {RED, YELLOW, ORANGE};
 
     Random RAND;
-    /* init */
+    // Init
     LEDS(int led_count, int port_no)
     {
         /* setup our LEDS and Buffer */
@@ -28,7 +28,7 @@ public class LEDS {
         RAND = new Random();
     }
 
-    /* utility functions */
+    /* Utility Functions */
 
     void Fill(int red, int green, int blue)
     {
@@ -40,7 +40,7 @@ public class LEDS {
  
     void Fire_Effect()
     {
-        /* for better randomization reseed every time */
+        // Seed for proper random
         RAND.setSeed(System.currentTimeMillis());
 
         for(int i = 0; i < LED_BUF.getLength(); i++)
