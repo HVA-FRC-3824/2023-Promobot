@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import static edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 public class Pneumatics extends SubsystemBase {
     private Compressor COMPRESSOR;
@@ -34,7 +35,7 @@ public class Pneumatics extends SubsystemBase {
     {
         if(e_or_d)
         {
-            COMPRESSOR.enableDigital();
+            COMPRESSOR.enableAnalog(0, Constants.MAX_PRESSURE);
         } else {
             COMPRESSOR.close();
         }
