@@ -1,34 +1,30 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.Inliners;
 import frc.robot.subsystems.*;
 
 public class Robot extends TimedRobot {
-  private XboxController Controller;
+  private Joystick Joystick;
 
-  public WestCoast WestCoastDrive;
-  public Pneumatics PneumaticsControl;
+  public static WestCoast WestCoastDrive;
+  public static Pneumatics PneumaticsControl;
+
+  public static Inliners InlineCommands;
+  public static OI OperatorInterface;
 
   @Override
   public void robotInit() {
     WestCoastDrive = new WestCoast();
-    PneumaticsControl = new Pneumatics(0,0);
-
-    Controller = new XboxController(Constants.CONTROLLER_ID);
+    PneumaticsControl = new Pneumatics(Constants.PNEUMATICS_CAN_ID);
+    Joystick = new Joystick(Constants.CONTROLLER_ID);
+    InlineCommands = new Inliners(PneumaticsControl);
+    OperatorInterface = new OI(); // Assumes InlineCommands has already been initialized! 
   }
 
   @Override
   public void teleopPeriodic() {
-    // TODO: Fix right_joystick!
-    WestCoastDrive.Drive(-Controller.getLeftY() * Constants.INPUT_MULTIPLIER_FORWARD, Controller.getRightX() * Constants.INPUT_MULTIPLIER_SIDEWAYS);
-    if(Controller.getAButtonPressed())
-    {
-      PneumaticsControl.Enable_Compressor(true);
-    }
-    else
-    {
-      PneumaticsControl.Enable_Compressor(false);
-    }
+    WestCoastDrive.Drive(-Joystick.getY() * Constants.INPUT_MULTIPLIER_FORWARD, -Joystick.getX() * Constants.INPUT_MULTIPLIER_SIDEWAYS);
   }
 }

@@ -23,5 +23,6 @@ public class Constants {
     public static final int AXE_MOTOR_ID = 5;
 
     // Pneumatics
-    public static final int MAX_PRESSURE = 110;
+    public static final int PNEUMATICS_CAN_ID = 9;
+    public static final int MAX_PRESSURE      = 110;
 }
