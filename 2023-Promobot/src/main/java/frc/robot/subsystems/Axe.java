@@ -2,19 +2,19 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
 public class Axe extends SubsystemBase{
-    WPI_TalonSRX AXE_CONTROLLER;
+    private TalonFX AXE_CONTROLLER;
     
-    Axe()
+    public Axe()
     {
-        AXE_CONTROLLER = new WPI_TalonSRX(Constants.AXE_MOTOR_ID);
+        AXE_CONTROLLER = new TalonFX(Constants.AXE_MOTOR_ID);
     }
 
-    public void Move_Axe(double voltage)
+    public void move_axe(double input)
     {
-        AXE_CONTROLLER.setVoltage(voltage);
+        AXE_CONTROLLER.set(ControlMode.PercentOutput,input);
     }
 }

@@ -15,12 +15,13 @@ public class Constants {
     public static final boolean RIGHT_INVERTED = true;
     public static final boolean LEFT_INVERTED  = false;
 
-    // WestCoast input multiplier TODO: lower and tune these for the stage
-    public static final double INPUT_MULTIPLIER_FORWARD  = 1.0;
-    public static final double INPUT_MULTIPLIER_SIDEWAYS = 1.0;
+    // WestCoast input multiplier 
+    public static final double INPUT_MULTIPLIER_FORWARD  = .5;
+    public static final double INPUT_MULTIPLIER_SIDEWAYS = .5;
 
     // Axe Motors
-    public static final int AXE_MOTOR_ID = 5;
+    public static final int AXE_MOTOR_ID            = 17;
+    public static final double AXE_INPUT_MULTIPLIER = .1; 
 
     // Pneumatics
     public static final int PNEUMATICS_CAN_ID = 9;
