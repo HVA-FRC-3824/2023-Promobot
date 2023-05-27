@@ -10,39 +10,39 @@ import frc.robot.Constants;
 public class WestCoast extends SubsystemBase {
 
     // Declare our motor controllers
-    WPI_TalonSRX left_master  = new WPI_TalonSRX(Constants.L_MASTER_ID);
-    WPI_TalonSRX left_slave   = new WPI_TalonSRX(Constants.L_SLAVE_ID);
-    WPI_TalonSRX right_master = new WPI_TalonSRX(Constants.R_MASTER_ID);
-    WPI_TalonSRX right_slave  = new WPI_TalonSRX(Constants.R_SLAVE_ID);
+    WPI_TalonSRX LEFT_MASTER  = new WPI_TalonSRX(Constants.L_MASTER_ID);
+    WPI_TalonSRX LEFT_SLAVE   = new WPI_TalonSRX(Constants.L_SLAVE_ID);
+    WPI_TalonSRX RIGHT_MASTER = new WPI_TalonSRX(Constants.R_MASTER_ID);
+    WPI_TalonSRX RIGHT_SLAVE  = new WPI_TalonSRX(Constants.R_SLAVE_ID);
 
-    DifferentialDrive drive_train;
+    DifferentialDrive DRIVE_TRAIN;
 
     // Init
     public WestCoast()
     {
         // Configure controllers
-        left_master.configFactoryDefault();
-        left_slave.configFactoryDefault();
-        right_master.configFactoryDefault();
-        right_slave.configFactoryDefault();
+        LEFT_MASTER.configFactoryDefault();
+        LEFT_SLAVE.configFactoryDefault();
+        RIGHT_MASTER.configFactoryDefault();
+        RIGHT_SLAVE.configFactoryDefault();
 
         // Setup pseudo motor group
-        left_slave.follow(left_master);
-        right_slave.follow(right_master);
+        LEFT_SLAVE.follow(LEFT_MASTER);
+        RIGHT_SLAVE.follow(RIGHT_MASTER);
 
         // Invert voltages
-        left_master.setInverted(Constants.LEFT_INVERTED);
-        right_master.setInverted(Constants.RIGHT_INVERTED);
-        left_slave.setInverted(InvertType.FollowMaster);
-        right_slave.setInverted(InvertType.FollowMaster);
+        LEFT_MASTER.setInverted(Constants.LEFT_INVERTED);
+        RIGHT_MASTER.setInverted(Constants.RIGHT_INVERTED);
+        LEFT_SLAVE.setInverted(InvertType.FollowMaster);
+        RIGHT_SLAVE.setInverted(InvertType.FollowMaster);
 
         // Init our WPILIB drive thingy
-        drive_train = new DifferentialDrive(left_master,right_master);
-        drive_train.setSafetyEnabled(Constants.SAFETY_ENABLED);
+        DRIVE_TRAIN = new DifferentialDrive(LEFT_MASTER,RIGHT_MASTER);
+        DRIVE_TRAIN.setSafetyEnabled(Constants.SAFETY_ENABLED);
     }
     
-    public void Drive(double forward, double sideways)
+    public void drive(double forward, double sideways)
     {
-        this.drive_train.arcadeDrive(forward, sideways);
+        this.DRIVE_TRAIN.arcadeDrive(forward, sideways);
     }
 }
