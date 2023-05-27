@@ -4,8 +4,8 @@
 
 Current Features:
 * West Coast Drive
-* Turret (potentially)
-* LEDS
+* Pneumatics
+* Custom Axe Mechanism
 
 Contributors:
 * Zane Maples
