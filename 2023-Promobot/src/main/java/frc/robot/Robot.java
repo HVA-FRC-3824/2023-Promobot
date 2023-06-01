@@ -5,7 +5,8 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import frc.robot.subsystems.*;
 
 public class Robot extends TimedRobot {
-  private Joystick Joystick;
+  private Joystick Driver;
+  private Joystick Operator;
   public static WestCoast WestCoastDrive;
   public static Pneumatics PneumaticsControl;
   public static Axe AxeController;
@@ -14,22 +15,23 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     WestCoastDrive = new WestCoast();
     PneumaticsControl = new Pneumatics(Constants.PNEUMATICS_CAN_ID);
-    Joystick = new Joystick(Constants.CONTROLLER_ID);
+    Driver = new Joystick(Constants.CONTROLLER_ID);
+    Operator = new Joystick(Constants.OPERATOR_ID);
     AxeController = new Axe();
   }
 
   @Override
   public void teleopPeriodic() {
-    WestCoastDrive.drive(-Joystick.getY() * Constants.INPUT_MULTIPLIER_FORWARD, -Joystick.getX() * Constants.INPUT_MULTIPLIER_SIDEWAYS);
-    AxeController.move_axe(Joystick.getRawAxis(5)*Constants.AXE_INPUT_MULTIPLIER);
+    WestCoastDrive.drive(-Driver.getY() * Constants.INPUT_MULTIPLIER_FORWARD, -Driver.getX() * Constants.INPUT_MULTIPLIER_SIDEWAYS);
+    AxeController.move_axe(Operator.getY() *Constants.AXE_INPUT_MULTIPLIER);
     
     // Triggers control the solenoid 
-    if(Joystick.getRawAxis(2) == 1)
+    if(Operator.getRawAxis(2) == 1)
     {
       PneumaticsControl.void_air();
     }
 
-    if(Joystick.getRawAxis(3) == 1)
+    if(Operator.getRawAxis(3) == 1)
     {
       PneumaticsControl.close_solenoid();
     }

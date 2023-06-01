@@ -3,6 +3,7 @@ package frc.robot;
 public class Constants {
     // Joystick Ids
     public static final int CONTROLLER_ID  = 0;
+    public static final int OPERATOR_ID    = 1;
 
     // WestCoast Motors
     public static final int L_MASTER_ID = 6;
