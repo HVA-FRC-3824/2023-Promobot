@@ -2,6 +2,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.*;
 
 public class Robot extends TimedRobot {
@@ -35,5 +36,7 @@ public class Robot extends TimedRobot {
     {
       PneumaticsControl.close_solenoid();
     }
+
+    SmartDashboard.putNumber("PSI: ", Pneumatics.HUB.getPressure(Constants.ANALONG_PORT));
   }
 }
