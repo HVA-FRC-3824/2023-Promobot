@@ -27,4 +27,5 @@ public class Constants {
     // Pneumatics
     public static final int PNEUMATICS_CAN_ID = 9;
     public static final int MAX_PRESSURE      = 110;
+    public static final int ANALONG_PORT      = 0;
 }
