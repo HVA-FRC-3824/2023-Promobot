@@ -23,7 +23,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     WestCoastDrive.drive(-Driver.getY() * Constants.INPUT_MULTIPLIER_FORWARD, -Driver.getX() * Constants.INPUT_MULTIPLIER_SIDEWAYS);
-    AxeController.move_axe(Operator.getY() *Constants.AXE_INPUT_MULTIPLIER);
+    AxeController.move_axe(Operator.getRawAxis(5) *Constants.AXE_INPUT_MULTIPLIER);
     
     // Triggers control the solenoid 
     if(Operator.getRawAxis(2) == 1)
