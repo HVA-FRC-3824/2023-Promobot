@@ -2,8 +2,8 @@ package frc.robot;
 
 public class Constants {
     // Joystick Ids
-    public static final int CONTROLLER_ID  = 1;
-    public static final int OPERATOR_ID    = 0;
+    public static final int CONTROLLER_ID  = 0;
+    //public static final int OPERATOR_ID    = 0;
 
     // WestCoast Motors
     public static final int L_MASTER_ID = 6;
@@ -22,7 +22,7 @@ public class Constants {
 
     // Axe Motors
     public static final int AXE_MOTOR_ID            = 17;
-    public static final double AXE_INPUT_MULTIPLIER = .1; 
+    public static final double AXE_INPUT_MULTIPLIER = .15; 
 
     // Pneumatics
     public static final int PNEUMATICS_CAN_ID = 9;

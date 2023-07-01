@@ -2,41 +2,40 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.*;
 
 public class Robot extends TimedRobot {
   private Joystick Driver;
-  private Joystick Operator;
-  public static WestCoast WestCoastDrive;
-  public static Pneumatics PneumaticsControl;
-  public static Axe AxeController;
+  private WestCoast WestCoastDrive;
+  private Axe AxeControl;
 
   @Override
   public void robotInit() {
     WestCoastDrive = new WestCoast();
-    PneumaticsControl = new Pneumatics(Constants.PNEUMATICS_CAN_ID);
     Driver = new Joystick(Constants.CONTROLLER_ID);
-    Operator = new Joystick(Constants.OPERATOR_ID);
-    AxeController = new Axe();
+    AxeControl = new Axe();
   }
+
+  boolean AxeOn = false;
 
   @Override
   public void teleopPeriodic() {
     WestCoastDrive.drive(-Driver.getY() * Constants.INPUT_MULTIPLIER_FORWARD, -Driver.getX() * Constants.INPUT_MULTIPLIER_SIDEWAYS);
-    AxeController.move_axe(Operator.getRawAxis(5) *Constants.AXE_INPUT_MULTIPLIER);
-    
-    // Triggers control the solenoid 
-    if(Operator.getRawAxis(2) == 1)
+    AxeControl.move_axe(Driver.getRawAxis(4) * Constants.AXE_INPUT_MULTIPLIER);
+  
+    if(AxeOn)
     {
-      PneumaticsControl.void_air();
+      /* Set axe movement to max */
+      AxeControl.move_axe(1 * Constants.AXE_INPUT_MULTIPLIER);
     }
 
-    if(Operator.getRawAxis(3) == 1)
+    if(Driver.getRawAxis(3) == 1)
     {
-      PneumaticsControl.close_solenoid();
+      AxeOn = true;
     }
-
-    SmartDashboard.putNumber("PSI: ", Pneumatics.HUB.getPressure(Constants.ANALONG_PORT));
+    if(Driver.getRawAxis(2) == 1)
+    {
+      AxeOn = false;
+    }
   }
 }
