@@ -7,7 +7,8 @@ import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
 public class Axe extends SubsystemBase{
     private TalonFX AXE_CONTROLLER;
-    
+    private boolean CONSTANT_MOVE = false;
+
     public Axe()
     {
         AXE_CONTROLLER = new TalonFX(Constants.AXE_MOTOR_ID);
@@ -16,5 +17,18 @@ public class Axe extends SubsystemBase{
     public void move_axe(double input)
     {
         AXE_CONTROLLER.set(ControlMode.PercentOutput,input);
+    }
+
+    public void toggle_axe()
+    {
+        this.CONSTANT_MOVE = !this.CONSTANT_MOVE;
+    }
+
+    @Override
+    public void periodic() {
+        if(CONSTANT_MOVE)
+        {
+            move_axe(1 * Constants.AXE_INPUT_MULTIPLIER);
+        }
     }
 }
