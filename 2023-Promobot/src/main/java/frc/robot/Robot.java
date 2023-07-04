@@ -18,7 +18,7 @@ public class Robot extends TimedRobot {
     WestCoastDrive = new WestCoast();
     Driver = new Joystick(Constants.CONTROLLER_ID);
     AxeControl = new Axe(); 
-    AxeToggler = new JoystickButton(Driver, 0);
+    AxeToggler = new JoystickButton(Driver, 1);
     AxeToggler.onTrue(new AxeToggle());
   }
 
@@ -27,7 +27,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     WestCoastDrive.drive(-Driver.getY() * Constants.INPUT_MULTIPLIER_FORWARD, -Driver.getX() * Constants.INPUT_MULTIPLIER_SIDEWAYS);
-    AxeControl.move_axe(Driver.getRawAxis(4) * Constants.AXE_INPUT_MULTIPLIER);
+    //AxeControl.move_axe(Driver.getRawAxis(4) * Constants.AXE_INPUT_MULTIPLIER);
   
     /* if(AxeOn)
     {

@@ -28,6 +28,7 @@ public class Axe extends SubsystemBase{
     public void periodic() {
         if(CONSTANT_MOVE)
         {
+            System.out.println("Moving the axe!");
             move_axe(1 * Constants.AXE_INPUT_MULTIPLIER);
         }
     }
